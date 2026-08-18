@@ -1,5 +1,5 @@
 # cloud-security-portfolio
-Hands-on projects documenting my transition into cloud security — deploying real infrastructure, breaking it, and fixing it, with full write-ups of the process.
+Hands-on projects documenting my transition into cloud security, deploying real infrastructure, breaking it, and fixing it, with full write-ups of the process.
 
 ## About Me
 Electronics & Communication Engineer background, currently building cloud security skills through Microsoft Azure training (AZ-500, AZ-104, Security Fundamentals) and self-directed projects. This repo is where I apply that learning hands-on.
