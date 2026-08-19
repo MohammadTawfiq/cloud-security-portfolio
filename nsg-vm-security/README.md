@@ -29,7 +29,7 @@ To verify the VM and NSG rule were working correctly regardless, I connected thr
 ![Bastion connection proof](./04-bastion-connection-proof.png)
 
 ## Real-World Validation: This Matters
-Within hours of the VM going live, sshd logs showed multiple automated bots from different IPs attempting to brute-force root login — all rejected before authentication, since they weren't coming from the allowed IP:
+Within minutes of the VM's initial deployment during the brief window before the NSG rule was locked down, sshd logs already showed automated bots from multiple IPs attempting to brute-force root login. Their login attempts failed (wrong credentials), but the speed at which they found and targeted the VM demonstrates why leaving SSH open to the internet, even briefly, is a real risk and validates the importance of the lockdown that followed:
 
 ![Bot login attempts](./05-bot-attack-attempts.png)
 
