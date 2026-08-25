@@ -1,7 +1,7 @@
-# OWASP Juice Shop — Custom IDOR Vulnerability (A01:2021 Broken Access Control)
+# OWASP Juice Shop : A Custom IDOR Vulnerability (A01:2021 Broken Access Control)
 
 ## Objective
-Fork OWASP Juice Shop, add a custom "private notes" feature containing an intentional IDOR (Insecure Direct Object Reference) vulnerability, exploit it to prove real impact, then patch and re-verify the fix — demonstrating the full attack-and-defense cycle for this OWASP Top 10 category.
+Fork OWASP Juice Shop, add a custom "private notes" feature containing an intentional IDOR (Insecure Direct Object Reference) vulnerability, exploit it to prove real impact, then patch and re-verify the fix demonstrating the full attack-and-defense cycle for this OWASP Top 10 category.
 
 ## What I Built
 - A new `Note` model (`UserId`, `id`, `text`) and a `/api/mynotes/:id` endpoint on a forked, locally-run instance of Juice Shop.
@@ -28,7 +28,7 @@ Any authenticated user could fetch **any** note by simply changing the ID in the
 
 ![User B reads User A's note](./03-exploit-userb-reads-usera-note.png)
 
-User B — who never created or owned this note — received its full private content. This confirms a real, exploitable Broken Access Control vulnerability.
+User B who never created or owned this note received its full private content. This confirms a real, exploitable Broken Access Control vulnerability.
 
 ## The Fix
 ```ts
