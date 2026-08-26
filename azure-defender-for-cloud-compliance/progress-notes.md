@@ -13,3 +13,5 @@
   (Free tier, Full monitoring coverage)
 - First Secure Score assessment now running in background, checking results 
   tomorrow
+  - Captured resource architecture diagram showing VM, NSG, storage account, 
+  disk, vnet, and public IP relationships (see `04-resource-architecture-diagram.png`)
