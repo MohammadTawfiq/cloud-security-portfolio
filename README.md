@@ -1,20 +1,28 @@
 # cloud-security-portfolio
-Hands-on projects documenting my transition into cloud security, deploying real infrastructure, breaking it, and fixing it, with full write-ups of the process.
+
+Hands-on projects documenting my transition into cloud security. Deploying real infrastructure, breaking it, and fixing it, with full write-ups of the process.
 
 ## About Me
-Electronics & Communication Engineer background, currently building cloud security skills through Microsoft Azure training (AZ-500, AZ-104, Security Fundamentals) and self-directed projects. This repo is where I apply that learning hands-on.
+
+Electronics & Communication Engineer background, currently building cloud security skills through Microsoft Azure training (AZ-500, AZ-104, Security Fundamentals) and self-directed, hands-on projects. This repo is where I apply that learning in real deployed environments.
 
 ## Projects
 
 ### 1. Securing an Azure VM with Network Security Groups
-*Status: In progress*
-Deploying a basic Azure VM and locking down inbound traffic to SSH-only from a trusted IP, demonstrating least-privilege network access control.
-[→ View project](./nsg-vm-security/)
+**Status: Complete**
+Deployed an Azure VM and locked down inbound traffic to SSH-only from a trusted source, demonstrating least-privilege network access control. Verified access using Azure Bastion due to local ISP port restrictions.
+[→ View project](https://github.com/MohammadTawfiq/cloud-security-portfolio/blob/main/nsg-vm-security)
 
-### 2. OWASP Juice Shop : IDOR Vulnerability & Patch (A01:2021 Broken Access Control)
-*Status: Planned*
-Deploying a customized, intentionally vulnerable web app to Azure, injecting a real IDOR vulnerability, exploiting it, then patching and re-verifying the fix, full attack-and-defense documentation.
-[→ View project](./juice-shop-idor/)
+### 2. OWASP Juice Shop: IDOR Vulnerability & Patch (A01:2021 Broken Access Control)
+**Status: Complete**
+Deployed a customized, intentionally vulnerable web app to Azure, built and exploited a real IDOR (Insecure Direct Object Reference) vulnerability as two separate users, then patched it with an ownership check and re-verified the fix. Full attack-and-defense documentation with screenshot evidence.
+[→ View project](https://github.com/MohammadTawfiq/cloud-security-portfolio/blob/main/juice-shop-idor)
+
+### 3. Azure Defender for Cloud: Compliance & Posture Management
+**Status: In progress**
+Deploying Microsoft Defender for Cloud against a live Azure environment, using Secure Score to identify real misconfigurations (open SSH access, default disk encryption, public blob storage access), then remediating them with Azure Policy and mapping the results against the CIS Microsoft Azure Foundations Benchmark. Before/after evidence documented throughout.
+[→ View project](https://github.com/MohammadTawfiq/cloud-security-portfolio/blob/main/azure-defender-for-cloud-compliance)
 
 ## Tools & Technologies
-Azure, Docker, Git/GitHub, Node.js
+
+Azure, Microsoft Defender for Cloud, Azure Policy, Docker, Git/GitHub, Node.js
