@@ -59,3 +59,23 @@
   the same findings as Secure Score, solid before-state evidence
 - Next: remediate all 3 (tighten NSG rule, address disk encryption, restrict 
   storage network access), then re-check policy compliance for the after-state
+
+  -- Remediated Finding 1 (open SSH): updated NSG rule to restrict source from 
+  "Any" to a specific IP address (see `12-nsg-ssh-restricted-after.png`)
+- Remediated Finding 3 (storage public network access): changed storage 
+  account's public network access from "Enabled from all networks" to 
+  "Enabled from selected networks," added the project's existing virtual 
+  network (`vnet-indiasouthcentral-1`) and own IP address as allowed sources 
+  (see `13-storage-network-restricted-after.png`)
+- Verified resource access settings (virtual network endpoint status: 
+  Enabled, IPv4 address listed, exceptions reviewed) confirming the 
+  restriction was correctly applied at the resource level 
+  (see `14-storage-network-resource-access-settings.png`)
+- Note: Azure Policy compliance for both findings is backed by Microsoft 
+  Defender for Cloud security assessments (`Microsoft.Security/assessments`), 
+  which refresh on Defender's own recommendation cycle, this can lag actual 
+  configuration changes by several hours, sometimes up to 24. The policy 
+  dashboard may continue to show "Non-compliant" for a while even though the 
+  underlying resource configuration is already fixed. Verified both fixes 
+  directly at the resource level rather than waiting on the policy dashboard 
+  to catch up.
