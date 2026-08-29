@@ -19,7 +19,7 @@ Deployed a customized, intentionally vulnerable web app to Azure, built and expl
 [→ View project](https://github.com/MohammadTawfiq/cloud-security-portfolio/blob/main/juice-shop-idor)
 
 ### 3. Azure Defender for Cloud: Compliance & Posture Management
-**Status: In progress**
+**Status: Complete**
 Deploying Microsoft Defender for Cloud against a live Azure environment, using Secure Score to identify real misconfigurations (open SSH access, default disk encryption, public blob storage access), then remediating them with Azure Policy and mapping the results against the CIS Microsoft Azure Foundations Benchmark. Before/after evidence documented throughout.
 [→ View project](https://github.com/MohammadTawfiq/cloud-security-portfolio/blob/main/azure-defender-for-cloud-compliance)
 
