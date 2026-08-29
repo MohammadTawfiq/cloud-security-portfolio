@@ -79,3 +79,40 @@
   underlying resource configuration is already fixed. Verified both fixes 
   directly at the resource level rather than waiting on the policy dashboard 
   to catch up.
+
+## Day 3
+- Rechecked Microsoft Defender for Cloud Secure Score: updated to 15%, 
+  with 20 total recommendations now tracked (up from 13), confirming the 
+  assessment engine continues to expand its evaluation over time 
+  (see `15-secure-score-15percent-progress.png`)
+- Attempted one-click "Quick Fix" remediation on the management ports 
+  finding to test Defender's automated remediation feature — found this 
+  specific feature requires the paid Defender CSPM plan and is not 
+  available under Foundational CSPM (free tier) 
+  (see `16-quickfix-requires-paid-tier.png`)
+- Confirmed this project's remediations were completed correctly and 
+  manually at the resource level (NSG rule, storage network config) 
+  rather than through Defender's paid automated fix — Azure Policy 
+  compliance dashboards may take up to 24 hours to reflect these changes 
+  due to Defender's assessment refresh cycle, a limitation documented 
+  above rather than a failure of remediation
+
+## Summary
+- **3 misconfigurations identified** via Microsoft Defender for Cloud 
+  Secure Score, each independently confirmed via Azure Policy compliance 
+  checks (built-in policy definitions, AuditIfNotExists effect)
+- **2 of 3 remediated** at the resource level: open SSH access restricted 
+  to a specific IP; storage account public network access restricted to 
+  a specific virtual network and IP
+- **1 of 3 deliberately deferred**: disk encryption remediation requires 
+  an Azure Key Vault, which doesn't yet exist in this environment — 
+  deferred to Project 4 (Key Vault + Managed Identity), where it becomes 
+  a natural, documented dependency rather than an out-of-scope workaround
+- **Compliance framework targeted**: CIS Microsoft Azure Foundations 
+  Benchmark (enabled as a standard in Defender for Cloud)
+- **Key lesson**: Defender for Cloud's automated one-click remediation 
+  ("Quick Fix") and its "Risk level" prioritization both require the paid 
+  Defender CSPM plan; Foundational CSPM (free tier) still provides full 
+  Secure Score evaluation, named recommendations, and policy-based 
+  compliance tracking — sufficient for identifying and manually 
+  remediating real misconfigurations
