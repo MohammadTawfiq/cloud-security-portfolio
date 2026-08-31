@@ -52,3 +52,29 @@ The VM retrieved the secret's value successfully. No username, password, or conn
 ## Closing the Project 3 gap: disk encryption
 
 This is where the project hit its real bottleneck. Enabling Azure Disk Encryption on the VM's original size, `Standard_B1s` with 1 GB of RAM, failed outright. The deployment only reported a generic "Conflict" error at first, which wasn't useful on its own. Digging into the Activity Log's Error details surfaced the actual reason:
+
+Azure Disk Encryption for Linux has a real memory requirement that isn't obvious until you hit it. I stopped the VM, resized it to `Standard_B2ms` (2 vCPU, 8 GB RAM), started it back up, and retried the encryption setup. It completed successfully against `kv-mtawfiq-p4` on the second attempt.
+
+📸 `screenshots/05-vm-resized-b2ms.png`
+
+This closes the finding Project 3 had to leave open:
+
+Before, from Project 3: `Azure disk encryption: Not enabled`
+After, this project: `Azure disk encryption: Enabled`
+
+📸 `screenshots/06-before-not-enabled.png`
+📸 `screenshots/07-after-enabled.png`
+
+## Summary
+
+- Built a Key Vault using the RBAC permission model, and a VM with a system-assigned Managed Identity
+- Set up least-privilege access, with scoped role assignments limited to the vault itself, for both my own account and the VM's identity
+- Proved secure, credential-free secret retrieval end to end, from inside the VM, using only its Managed Identity
+- Hit a real memory requirement enabling Azure Disk Encryption, diagnosed it through the Activity Log rather than guessing, resized the VM, and fixed it
+- Closed the disk encryption finding deferred from Project 3, completing that dependency chain
+
+## Lessons learned
+- An RBAC-model Key Vault grants no implicit access to anyone, including the account owner. Every principal, including your own account, needs an explicit, scoped role assignment before it can touch a secret.
+- Managed Identity removes the problem of needing a credential to get a credential. Proving it end to end, requesting a token and retrieving a secret from inside the VM with nothing hardcoded anywhere, made that concrete rather than theoretical.
+- Some fixes depend on other infrastructure being built first. Project 3 couldn't close its disk encryption finding without a Key Vault; this project existed specifically to build that vault and finish the job.
+- Azure Disk Encryption for Linux needs roughly 8 GB of RAM. A small VM size will fail with a generic deployment error that hides the real, specific reason, which only shows up in the Activity Log's Error details.
