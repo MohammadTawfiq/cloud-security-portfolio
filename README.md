@@ -23,6 +23,11 @@ Deployed a customized, intentionally vulnerable web app to Azure, built and expl
 Deploying Microsoft Defender for Cloud against a live Azure environment, using Secure Score to identify real misconfigurations (open SSH access, default disk encryption, public blob storage access), then remediating them with Azure Policy and mapping the results against the CIS Microsoft Azure Foundations Benchmark. Before/after evidence documented throughout.
 [→ View project](https://github.com/MohammadTawfiq/cloud-security-portfolio/blob/main/azure-defender-for-cloud-compliance)
 
+### 4. Azure Key Vault and Managed Identity
+**Status: Complete**
+Built an Azure Key Vault with RBAC-based least-privilege access, then connected it to a VM using a system-assigned Managed Identity, proving secure, credential-free secret retrieval end to end. Also closes the disk encryption finding deferred from Project 3, resolving a real Azure Disk Encryption memory requirement along the way.
+[→ View project](https://github.com/MohammadTawfiq/cloud-security-portfolio/blob/main/key-vault-managed-identity)
+
 ## Tools & Technologies
 
-Azure, Microsoft Defender for Cloud, Azure Policy, Docker, Git/GitHub, Node.js
+Azure, Microsoft Defender for Cloud, Azure Policy, Azure Key Vault, Managed Identity, RBAC, Docker, Git/GitHub, Node.js
