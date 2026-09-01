@@ -28,6 +28,11 @@ Deploying Microsoft Defender for Cloud against a live Azure environment, using S
 Built an Azure Key Vault with RBAC-based least-privilege access, then connected it to a VM using a system-assigned Managed Identity, proving secure, credential-free secret retrieval end to end. Also closes the disk encryption finding deferred from Project 3, resolving a real Azure Disk Encryption memory requirement along the way.
 [→ View project](https://github.com/MohammadTawfiq/cloud-security-portfolio/blob/main/key-vault-managed-identity)
 
+### 5. Securing Azure Cosmos DB with RBAC, Private Endpoints, and Encryption (Terraform)
+**Status: In Progress**
+Deploying an Azure Cosmos DB account via Terraform (Infrastructure as Code) rather than the Portal, then securing it with network isolation via Private Endpoints, least-privilege RBAC, and encryption at rest and in transit — designed as secure-by-default from deployment rather than remediated afterward.
+[→ View project](https://github.com/MohammadTawfiq/cloud-security-portfolio/blob/main/05_cosmos-db-secured-terraform)
+
 ## Tools & Technologies
 
-Azure, Microsoft Defender for Cloud, Azure Policy, Azure Key Vault, Managed Identity, RBAC, Docker, Git/GitHub, Node.js
+Azure, Microsoft Defender for Cloud, Azure Policy, Azure Key Vault, Managed Identity, RBAC, Terraform, Cosmos DB, Docker, Git/GitHub, Node.js
