@@ -1,0 +1,1 @@
+Project 5: Securing Azure Cosmos DB with RBAC, Private Endpoints, and Encryption (Deployed via Terraform)
