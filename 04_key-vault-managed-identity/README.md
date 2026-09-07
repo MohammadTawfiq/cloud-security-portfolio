@@ -15,9 +15,8 @@ I built an Azure Key Vault and connected it to a VM using a Managed Identity, so
 - A secret, stored and retrieved end to end using only the VM's identity
 - Azure Disk Encryption, enabled on the VM using the vault
 
-📸 `screenshots/01-keyvault-created.png`
-📸 `screenshots/02-vm-managed-identity-on.png`
-
+![Key Vault created](screenshots/01-keyvault-created.png)
+![VM with managed identity enabled](screenshots/02-vm-managed-identity-on.png)
 ## Setting up least-privilege access
 
 Switching the vault to the RBAC permission model means nobody gets access by default, not even the subscription owner. I confirmed this the hard way: my first attempt to create a secret failed with an RBAC permission error, because owning the subscription doesn't grant data-plane access to a vault's contents anymore.
@@ -31,7 +30,7 @@ I assigned two roles, both scoped to the vault itself rather than the resource g
 
 Both assignments were deliberately scoped to the vault resource itself, not the resource group or subscription, so the access granted matches exactly what each principal actually needs and nothing more.
 
-📸 `screenshots/03-rbac-role-assignments.png`
+![RBAC role assignments](screenshots/03-rbac-role-assignments.png)
 
 ## Proving secure secret retrieval
 
@@ -47,7 +46,7 @@ curl -s -H "Authorization: Bearer $TOKEN" "https://kv-mtawfiq-p4.vault.azure.net
 
 The VM retrieved the secret's value successfully. No username, password, or connection string was ever typed or stored anywhere in this process, only the VM's own Azure identity, requested and used automatically.
 
-📸 `screenshots/04-secret-retrieval-success.png`
+![Secret retrieved via managed identity](screenshots/04-secret-retrieval-success.png)
 
 ## Closing the Project 3 gap: disk encryption
 
@@ -55,15 +54,14 @@ This is where the project hit its real bottleneck. Enabling Azure Disk Encryptio
 
 Azure Disk Encryption for Linux has a real memory requirement that isn't obvious until you hit it. I stopped the VM, resized it to `Standard_B2ms` (2 vCPU, 8 GB RAM), started it back up, and retried the encryption setup. It completed successfully against `kv-mtawfiq-p4` on the second attempt.
 
-📸 `screenshots/05-vm-resized-b2ms.png`
-
+![VM resized to Standard_B2ms](screenshots/05-vm-resized-b2ms.png)
 This closes the finding Project 3 had to leave open:
 
 Before, from Project 3: `Azure disk encryption: Not enabled`
 After, this project: `Azure disk encryption: Enabled`
 
-📸 `screenshots/06-before-not-enabled.png`
-📸 `screenshots/07-after-enabled.png`
+![Disk encryption not enabled, from Project 3](screenshots/06-before-not-enabled.png)
+![Disk encryption enabled](screenshots/07-after-enabled.png)
 
 ## Summary
 
